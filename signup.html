@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP</title>
+    <link rel="stylesheet" href="signup.css">
+    
+</head>
+<body>
+    <div class="container">
+        <form id="form" onsubmit="ValidateSignup(event)" action="index.html">
+            <label>Email</label>
+            <input type="email" id="mail"><br><br>
+            <label>Password</label>
+            <input type="password" id="pass"><br><br>
+            <input id="signb" type="submit" value="SIGNUP">
+        </form>
+        <hr />
+        <hr />
+        <p>Already have an account?</p>
+        <hr />
+        <hr />
+        <a href="login.html">
+            <button>LOGIN</button>
+        </a>
+    </div>
+        <script>
+            function ValidateSignup(event){
+                event.preventDefault();
+                let pass=document.getElementById("pass").value;
+                let mail=document.getElementById("mail").value;
+
+                // Validate email
+                // Validate email
+                if (isEmpty(mail)) {
+                    alert('Mail is required');
+                    return false;
+                }
+
+                // Validate Password
+                else if (isEmpty(pass)) {
+                    alert('Password is required');
+                    return false;
+                }
+
+                // Validate Email
+                else if (!isValidEmail(mail)) {
+                    alert('Invalid email address');
+                    return false;
+                }
+
+                // Validate Password
+                if (!isValidPassword(pass)) {
+                    alert('Password must be at least 6 characters long.');
+                    return false;
+                }
+                window.location.href="index.html";
+            }
+            function isEmpty(value) {
+                return value.trim() === '';
+            }
+
+            // Function to check if the email is valid
+            function isValidEmail(mail) {
+                // A simple check for demonstration, you might want a more robust check in a real scenario
+                return mail.includes('@');
+            }
+
+            // Function to check if the password is valid
+            function isValidPassword(pass) {
+                // Check if the password is at least 6 characters long
+                return pass.length >= 6;
+            }
+    </script>
+
+</body>
+</html>
